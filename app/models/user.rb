@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :likes
 
   after_initialize :init
-  
+
   def init
     self.posts_counter ||= 0
   end

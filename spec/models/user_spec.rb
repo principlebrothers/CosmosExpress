@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'validations' do
-    subject {User.new(name: 'Ernesto', photo:'myphoto.jpg', bio:'I am a software developer') }
+    subject { User.new(name: 'Ernesto', photo: 'myphoto.jpg', bio: 'I am a software developer') }
 
     before { subject.save }
 
@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
     end
 
     describe 'recent_post' do
-      before { 5.times{ |post| Post.create(author: subject, title: "Post #{post}") } }
+      before { 5.times { |post| Post.create(author: subject, title: "Post #{post}") } }
 
       it 'should return the 3 most recent posts' do
         expect(subject.recent_post).to eq(subject.posts.last(3))

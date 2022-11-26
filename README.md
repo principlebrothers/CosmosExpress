@@ -61,7 +61,8 @@ After you're finished please remove all the comments and instructions!
 
 > A simple blog web app to understand rails and it design principles like Model View Controller (MVC)
 
-**[Cosmos Express]** is a bloging web app that can be use to share ideas with other around the world.
+**Cosmos Express** is a bloging web app that can be use to share ideas with other around the world. It was build on this Entity Relationship Diagram (ERD)
+<img src="murple_logo.png" alt="logo" width="140"  height="auto" />
 
 ## 🛠 Built With <a name="built-with"></a>
 

@@ -11,16 +11,6 @@ RSpec.describe User, type: :model do
       expect(subject).to_not be_valid
     end
 
-    it 'photo should be present' do
-      subject.photo = nil
-      expect(subject).to_not be_valid
-    end
-
-    it 'bio should be present' do
-      subject.bio = nil
-      expect(subject).to_not be_valid
-    end
-
     it 'posts_counter should be positive integer' do
       subject.posts_counter = -1
       expect(subject).to_not be_valid
@@ -30,7 +20,7 @@ RSpec.describe User, type: :model do
       before { 5.times { |post| Post.create(author: subject, title: "Post #{post}") } }
 
       it 'should return the 3 most recent posts' do
-        expect(subject.recent_post).to eq(subject.posts.last(3))
+        expect(subject.recent_post).to eq(subject.posts.order(created_at: :desc).limit(3))
       end
     end
   end

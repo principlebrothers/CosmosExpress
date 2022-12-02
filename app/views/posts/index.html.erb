@@ -1,2 +1,38 @@
-<h1>All specific user with all his/her posts</h1>
+<article class='main'>
+  <div class="profile__container container">
+    <div class="profile__img__container container">
+      <img src="<%= @user.photo %>" alt="<%= @user.name %>'s picture" />
+    </div>
+    <div class="profile__des__container container">
+        <h2><%= @user.name %></h2>
+        <span class="post__count">
+          Number of Posts: <%= @user.posts_counter %>
+        </span>
+    </div>
+  </div>
+  <article class="posts__comments">
+    <% @user_posts.each_with_index do |post, index| %>
+      <%= link_to "./posts/#{post.id}" do %>
+        <article class="posts__container container">
+          <h3>Post #<%= post.id %></h3>
+          <p><%= post.text.truncate_words(15, omission: '...(continued)') %></p>
+          <div class="comments__likes__count">
+            <span><em><b>Comments: <%= post.comments_counter %></em></b></span>
+            <span><em><b>Likes: <%= post.likes_counter %></em></b></span>
+          </div>
+        </article>
+      <% end %>
+      <% if post.comments.size > 0 %>
+        <ul class="comments__container container">
+          <% post.recent_comments.each do |comment| %>
+            <li>
+              <span><em><b><%= comment.author.name %>: </b></em></span>
+              <span><%= comment.text %></span>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </article>
+</article>
 

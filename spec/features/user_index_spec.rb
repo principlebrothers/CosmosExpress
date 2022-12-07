@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'UserIndex', type: :feature do
   before :each do
-    @user_one = User.create(name: 'Frank', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ghana.', posts_counter: 1)
+    @user_one = User.create(name: 'Frank', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                            bio: 'Teacher from Ghana.', posts_counter: 1)
 
-    @user_two = User.create(name: 'John', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ivory Cost.', posts_counter: 3)
+    @user_two = User.create(name: 'John', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                            bio: 'Teacher from Ivory Cost.', posts_counter: 3)
 
     @users = [@user_one, @user_two]
   end

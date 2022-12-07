@@ -11,10 +11,10 @@
     </div>
   </div>
   <article class="posts__comments">
-    <% @user_posts.each_with_index do |post, index| %>
+    <% @all_posts.each do |post| %>
       <%= link_to "./posts/#{post.id}" do %>
         <article class="posts__container container">
-          <h3>Post #<%= post.id %></h3>
+          <h3><%= post.title %></h3>
           <p><%= post.text.truncate_words(15, omission: '...(continued)') %></p>
           <div class="comments__likes__count">
             <span><em><b>Comments: <%= post.comments_counter %></em></b></span>
@@ -34,5 +34,8 @@
       <% end %>
     <% end %>
   </article>
+  <div class="pagination container d-flex justify-content-center">
+    <%= will_paginate @all_posts %>
+  </div>
 </article>
 

@@ -8,9 +8,9 @@
   </article>
 
   <article class="posts_container container">
-    <% @user.recent_post.each do |post| %>
+    <% @user.recent_post.each_with_index do |post, idx| %>
       <article class="posts__container container">
-        <h3>Post #<%= post.id %></h3>
+        <h3>Post #<%= idx+1 %></h3>
         <p><%= post.text.truncate_words(15, omission: '...(continued)') %></p>
         <div class="comments__likes__count">
           <span><em><b>Comments:

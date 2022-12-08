@@ -1,19 +1,12 @@
 <article class = "main">
-  <div class="profile__container container">
-    <div class="profile__img__container container">
-      <img src="<%= @user.photo %>" alt="<%= @user.name %>'s picture" />
-    </div>
-    <div class="profile__des__container container">
-        <h2><%= @user.name %></h2>
-        <span class="post__count">
-          Number of Posts: <%= @user.posts_counter %>
-        </span>
-    </div>
-  </div>
+
+  <%= render 'shared/user', user: @user %>
+
   <article class="bio__container container">
     <h3>Bio</h3>
     <span><%= @user.bio %></span>
   </article>
+
   <article class="posts_container container">
     <% @user.recent_post.each do |post| %>
       <article class="posts__container container">
@@ -25,10 +18,14 @@
           <span><em><b>Likes:
             <%= post.likes_counter %></em></b></span>
         </div>
+        <%= link_to user_post_path(@user.id, post.id) do %>
+          <button type="button" class="view-posts-btn my-1">View post</button>
+        <% end %>
       </article>
     <% end %>
   </article>
-  <div class="btn_container container">
-    <%= link_to "See all posts", user_posts_path(@user.id), class: 'btn btn-outline-info' %>
+  <div class="btn_container container d-flex  align-items-center">
+    <%= link_to "See all posts", user_posts_path(@user.id), class: 'btn btn-outline-info my-3 ' %>
+    <%= link_to "Add post", new_user_post_path(@user.id), class: 'btn btn-outline-primary mx-2' %>
   </div>
 </article>

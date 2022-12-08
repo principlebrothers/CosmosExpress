@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     if @like.save
       flash[:notice] = 'Like added successfully'
     else
-      flash[:error] = 'Like not added'
+      flash.now[:error] = 'Like not added'
     end
     redirect_to "/users/#{current_user.id}/posts"
   end

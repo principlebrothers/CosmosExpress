@@ -21,5 +21,6 @@
     <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
       <%= f.submit 'Like', class: 'btn btn-outline-danger mx-2' %>
     <% end %>
+    <%= link_to 'Back to posts', user_posts_path, class: 'btn btn-outline-secondary' %>
   </div>
 </article>

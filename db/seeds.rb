@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 user_one = User.create(name: 'Ernest', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-                        bio: 'Teacher from Ghana.', posts_counter: 0, email: 'ernest@gmail.com, password: '@123456')
+                        bio: 'Teacher from Ghana.', posts_counter: 0, email: 'ernestadonu@yahoo.com', password: '@123456')
 
-user_two = User.create(name: 'John', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-                        bio: 'Teacher from Ivory Cost.', posts_counter: 0, email: 'johnarren@yahoo.com', password: '123456@')
+user_two = User.create(name: 'Adonu', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                        bio: 'Teacher from Ivory Cost.', posts_counter: 0, email: 'adonuernest@gmail.com', password: '123456@')
 
 first_post = Post.create(author: user_one, title: 'Hello', text: 'This is my first post', comments_counter: 0,
                           likes_counter: 0)
@@ -24,7 +24,7 @@ fourth_post = Post.create(author: user_one, title: 'Fourth', text: 'This is my t
 
 fifth_post = Post.create(author: user_one, title: 'Five', text: 'This is my third post', comments_counter: 0,likes_counter: 0)
 
-first_comment = Comment.create(post: first_post, author: 1, text: 'Hi Tom!')
+first_comment = Comment.create(post: first_post, author: user_one, text: 'Hi Tom!')
 
 second_comment = Comment.create(post: first_post, author: user_one, text: 'This is the second comment')
 

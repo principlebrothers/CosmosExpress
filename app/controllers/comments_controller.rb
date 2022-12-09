@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment added successfully'
       redirect_to user_post_path(params[:user_id], params[:post_id])
     else
-      flash[:error] = 'Comment not added'
+      flash.now[:error] = 'Comment not added'
       render :new
     end
   end

@@ -1,19 +1,11 @@
-<article class='main'>
-  <div class="profile__container container">
-    <div class="profile__img__container container">
-      <img src="<%= @user.photo %>" alt="<%= @user.name %>'s picture" />
-    </div>
-    <div class="profile__des__container container">
-        <h2><%= @user.name %></h2>
-        <span class="post__count">
-          Number of Posts: <%= @user.posts_counter %>
-        </span>
-    </div>
-  </div>
+<article class='main container'>
+  <h1> All posts </h1>
+  <%= render 'shared/user', user: @user %>
+
   <article class="posts__comments">
     <% @all_posts.each do |post| %>
       <%= link_to "./posts/#{post.id}" do %>
-        <article class="posts__container container">
+        <article class="posts__container">
           <h3><%= post.title %></h3>
           <p><%= post.text.truncate_words(15, omission: '...(continued)') %></p>
           <div class="comments__likes__count">
@@ -23,7 +15,7 @@
         </article>
       <% end %>
       <% if post.comments.size > 0 %>
-        <ul class="comments__container container">
+        <ul class="comments__container">
           <% post.recent_comments.each do |comment| %>
             <li>
               <span><em><b><%= comment.author.name %>: </b></em></span>
@@ -34,7 +26,7 @@
       <% end %>
     <% end %>
   </article>
-  <div class="pagination container d-flex justify-content-center">
+  <div class="pagination d-flex justify-content-center">
     <%= will_paginate @all_posts %>
   </div>
 </article>

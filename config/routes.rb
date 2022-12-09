@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  root "users#index"
+  devise_for :users #, sign_out_via: [:get, :delete]
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
 
-  resources :users, only: [:show] do
+  resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :new, :create] do
       resources :comments, only: [:new, :create]
       resources :likes, only: [:create]

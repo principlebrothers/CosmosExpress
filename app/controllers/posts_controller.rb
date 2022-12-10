@@ -13,19 +13,28 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      @post.update_post_counter
+      flash[:success] = 'Post was successfully deleted.'
+      redirect_to user_posts_path(current_user)
+    else
+      flash.now[:error] = 'Post was not deleted.'
+      render :show
+    end
+  end
+
   def create
     @post = current_user.posts.build(post_params)
 
-    respond_to do |format|
-      format.html do
-        if @post.save
-          flash[:success] = 'Post was successfully created.'
-          redirect_to user_post_path(current_user, @post)
-        else
-          flash.now[:error] = 'Post was not created.'
-          render :new
-        end
-      end
+    if @post.save
+      flash[:success] = 'Post was successfully created.'
+      redirect_to user_post_path(current_user, @post)
+    else
+      flash.now[:error] = 'Post was not created.'
+      render :new
     end
   end
 

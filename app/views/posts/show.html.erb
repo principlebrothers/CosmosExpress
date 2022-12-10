@@ -12,14 +12,20 @@
   <% unless @post.comments.size == 0 %>
     <ul class="container">
       <% @post.comments.each do |comment| %>
-        <li><%= comment.author.name %>: <%= comment.text %></li>
+        <li>
+          <span><%= comment.author.name %>:</span>
+          <span><%= comment.text %></span>
+          <% if can? :delete, comment %>
+            <%= button_to "Delete", user_post_comment_path(@post.author, @post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </li>
       <% end %>
   </ul>
   <% end %>
   <div class="d-flex">
     <%= link_to 'Comment', new_user_post_comment_path(@user, @post), class: 'btn btn-outline-primary' %>
     <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
-      <%= f.submit 'Like', class: 'btn btn-outline-danger mx-2' %>
+      <%= f.submit 'Like', class: 'btn btn-outline-info mx-2' %>
     <% end %>
     <%= link_to 'Back to posts', user_posts_path, class: 'btn btn-outline-secondary' %>
   </div>
